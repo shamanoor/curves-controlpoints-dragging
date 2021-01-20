@@ -2,7 +2,7 @@ Shape shape;
 
 void setup() {
   size(800, 800);
-  shape = new Shape(300, 15);
+  shape = new Shape(300, 15, 18);
   shape.initialize();
 }
 
