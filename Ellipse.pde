@@ -2,36 +2,41 @@ class Ellipse {
   int x, y, size;
   float moveX, moveY;
   float speed;
+  color fillColor;
+  String id;
+  PFont font;
 
-  Ellipse(int x_, int y_, int size_) {
+  Ellipse(int x_, int y_, int size_, int id_, float speed_) {
     this.x = x_;
     this.y = y_;
     this.size = size_;
-    this.moveX = random(2);
-    this.moveY = random(2);
-    this.speed = 0.5;
+    this.moveX = random(2, 4);
+    this.moveY = random(2, 4);
+    this.speed = speed_;
+    this.id = str(id_);
+
+    font = createFont("Georgia", 32);
+    textFont(font);
   }
-  
+
   // display control points
   void display() {
     fill(0, 0, 0, 0);
     noStroke();
     ellipse(x, y, size, size);
+    //text(id, x, y);
   }
 
   void update() {
-    this.x += moveX;
-    this.y += moveY;
+    this.x += moveX*speed;
+    this.y += moveY*speed;
 
     if (x <= 0 || x >= width) {
       this.moveX *= -1;
-      println("x too large or too small: ", x);
     }
-
 
     if (y <= 0 || y >= height) {
       this.moveY *= -1;
-      println("y too large or too small: ", y);
     }
   }
 
@@ -46,5 +51,10 @@ class Ellipse {
       return true;
     }
     return false;
+  }
+
+  float[] getCoords() {
+    float[] coords = {x, y};
+    return coords;
   }
 }
