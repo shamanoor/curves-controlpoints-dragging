@@ -21,10 +21,10 @@ class Ellipse {
 
   // display control points
   void display() {
-    fill(0, 0, 0, 0);
+    fill(0, 0, 0, 255);
     noStroke();
     ellipse(x, y, size, size);
-    //text(id, x, y);
+    text(id, x, y);
   }
 
   void update() {

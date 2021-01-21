@@ -17,22 +17,25 @@ class Shape {
   }
 
   void initialize() {
-    println("numPoints: ", numPoints);
-    println("numCoords: ", numCoords);
     for (int i=0; i<points.length; i++) {
       int xcoord = int(radius * sin(TWO_PI/numPoints * i));
       int ycoord = int(radius *cos(TWO_PI/numPoints * i));
-      points[i] = new Ellipse(xcoord + width/2, ycoord + height/2, pointSize, i, 0.8);
+      points[i] = new Ellipse(xcoord + width/2, ycoord + height/2, pointSize, i, 0.5);
     }
   }
 
   void move() {
     for (int i=0; i<points.length; i++) {
-      println("i: ", i);
       // update control points with their new locations
       points[i].update();
-      float[] coords = points[i].getCoords();
-      println(coords[0], coords[1]); // we see there are issues with point 0, 1, 3, 4
+    }
+
+    // necessary to ensure the shape stays soft in the edges: assign the end point the same
+    // as the starting point
+    points[points.length-2] = points[1]; // copy last point so they get updated with the same
+
+    for (int i=0; i<points.length; i++) {
+      // update control points with their new locations
       points[i].display();
     }
   }
