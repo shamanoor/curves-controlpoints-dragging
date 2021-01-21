@@ -20,7 +20,6 @@ class Shape {
   }
 
   void initialize() {
-
     /* now compute point locations automatically
      to do this we need to:
      
@@ -39,15 +38,24 @@ class Shape {
       xcoords[i] = int(radius * sin(TWO_PI/numPoints * i));
       ycoords[i] = int(radius *cos(TWO_PI/numPoints * i));
     }
-    
+
     for (int i=0; i<points.length; i++) {
       points[i] = new Ellipse(xcoords[i] + width/2, ycoords[i] + height/2, pointSize);
     }
   }
 
-  // check if any of the ellipses have been dragged
+  void move() {
+    for (int i=0; i<points.length; i++) {
+      // update control points with their new locations
+      println("i: ", i);
+      points[i].update();
+      points[i].display();
+    }
+  }
+
   void update() {
     for (int i=0; i<points.length; i++) {
+      // update control points with where they have been dragged to
       if (points[i].hovering()) {
         points[i].update(mouseX, mouseY);
         points[i].display();
@@ -59,7 +67,7 @@ class Shape {
     beginShape();
     for (int i=0; i<points.length; i++) {
       points[i].display();
-      fill(125, 125, 125, 100);
+      fill(255, 0, 0, 100);
       curveVertex(points[i].x, points[i].y);
     }
     endShape();
