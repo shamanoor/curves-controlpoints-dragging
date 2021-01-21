@@ -4,12 +4,12 @@ class Ellipse {
   float speed;
 
   Ellipse(int x_, int y_, int size_) {
-    x = x_;
-    y = y_;
-    size = size_;
+    this.x = x_;
+    this.y = y_;
+    this.size = size_;
     this.moveX = random(2);
     this.moveY = random(2);
-    speed = 0.5;
+    this.speed = 0.5;
   }
   
   // display control points
@@ -30,14 +30,14 @@ class Ellipse {
 
 
     if (y <= 0 || y >= height) {
-      moveY *= -1;
+      this.moveY *= -1;
       println("y too large or too small: ", y);
     }
   }
 
   void update(int newX, int newY) {
-    x = newX;
-    y = newY;
+    this.x = newX;
+    this.y = newY;
   }
 
   boolean hovering() {
