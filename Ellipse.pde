@@ -21,13 +21,17 @@ class Ellipse {
 
   // display control points
   void display() {
-    fill(0, 0, 0, 255);
+    fill(0, 0, 0, 0);
     noStroke();
     ellipse(x, y, size, size);
-    text(id, x, y);
+    //text(id, x, y);
   }
 
   void update() {
+    // here check if it is within the acceptable range
+    // currently that is the window's edges, but in the future
+    // they will be boundaries surrounding the shape, probably
+    // in the form of an outer circle and an inner circle
     this.x += moveX*speed;
     this.y += moveY*speed;
 

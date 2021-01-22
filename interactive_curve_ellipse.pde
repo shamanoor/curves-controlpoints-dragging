@@ -1,8 +1,8 @@
 Shape shape;
 
 void setup() {
-  size(800, 800);
-  shape = new Shape(300, 15, 4);
+  fullScreen();
+  shape = new Shape(300, 15, 14);
   shape.initialize();
 }
 

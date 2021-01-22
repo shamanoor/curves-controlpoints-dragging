@@ -1,6 +1,6 @@
 class Shape {
   /* The shape will start out as circle, concsisting of curve vertices
-   Th shape's form will change over time
+   The shape's form will change over time
    */
   Ellipse[] points;
   int radius;
@@ -8,6 +8,13 @@ class Shape {
   int numPoints;
   int numCoords;
 
+  // to control shape size
+  int maxOuterRadius;
+  int maxInnerRadius;
+  
+  // then we need to define these two based on the radius of the shape probably...?
+  // and then... or better to do this in the Ellipse class??...
+  
   Shape(int radius_, int pointSize_, int numPoints_) {
     this.radius = radius_;
     this.pointSize = pointSize_;
@@ -20,7 +27,7 @@ class Shape {
     for (int i=0; i<points.length; i++) {
       int xcoord = int(radius * sin(TWO_PI/numPoints * i));
       int ycoord = int(radius *cos(TWO_PI/numPoints * i));
-      points[i] = new Ellipse(xcoord + width/2, ycoord + height/2, pointSize, i, 0.5);
+      points[i] = new Ellipse(xcoord + width/2, ycoord + height/2, pointSize, i, 4);
     }
   }
 
